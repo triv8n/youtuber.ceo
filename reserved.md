@@ -1,3 +1,9 @@
 /J
 /maxrezd
 /x
+/oveja
+/baabaa
+/baabaa976
+/baabaa97611310
+/ovejagd
+/mynewsga05s
