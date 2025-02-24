@@ -26,8 +26,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 200px;
-            height: 200px;
+            width: 100px;
+            height: 100px;
             background-color: #111;
             border-radius: 50%;
             margin-top: 0px;
@@ -40,11 +40,39 @@
             width: 60%;
             height: auto;
         }
+        h1 {
+            font-family: sans-serif;
+            color: #fff;
+            font-size: 4vw;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+        .copied {
+            color: #cccccc;
+        }
     </style>
 </head>
 <body ondragstart="return false;" ondrop="return false;">
+    <h1 id="email">kk0vln99@gmail.com</h1>
     <a href="mailto:kk0vln99@gmail.com" class="contact-btn">
         <img src="email.svg" alt="Email Icon"/>
     </a>
+
+    <script>
+        const emailElement = document.getElementById('email');
+        
+        emailElement.addEventListener('click', () => {
+            navigator.clipboard.writeText(emailElement.textContent)
+                .then(() => {
+                    emailElement.textContent = "copied";
+                    emailElement.classList.add('copied');
+                    setTimeout(() => {
+                        emailElement.textContent = "kk0vln99@gmail.com";
+                        emailElement.classList.remove('copied');
+                    }, 2000);
+                })
+                .catch(err => console.error('Failed to copy text: ', err));
+        });
+    </script>
 </body>
 </html>
