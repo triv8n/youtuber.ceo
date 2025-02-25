@@ -1,9 +1,10 @@
+/terms
+/privacy
+/admin
 /J
 /maxrezd
 /x
 /oveja
-/baabaa
-/baabaa976
-/baabaa97611310
-/ovejagd
-/mynewsga05s
+/e
+/sd2k42
+/sam
