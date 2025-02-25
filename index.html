@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" unselectable="on" onselectstart="return false;" oncontextmenu="return false;">
+<html lang="en" oncontextmenu="return false;">
 
 <head>
     <meta charset="UTF-8">
@@ -9,7 +9,6 @@
     <style>
         html,
         body {
-            user-select: none;
             background-color: black;
             display: flex;
             flex-direction: column;
@@ -30,11 +29,13 @@
             color: #fff;
             font-size: 6vw;
             cursor: pointer;
+            user-select: auto;
         }
 
         h2 {
             color: #bbb;
             font-size: 3vw;
+            user-select: none;
         }
 
         .copied {
