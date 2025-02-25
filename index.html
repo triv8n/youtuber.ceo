@@ -1,19 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" unselectable="on" onselectstart="return false;" oncontextmenu="return false;">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <title>coming soon :)</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <style>
-        html {
-            -moz-user-select: none;
-            -webkit-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            -o-user-select: none;
-        }
+        html,
         body {
+            user-select: none;
             background-color: black;
             display: flex;
             flex-direction: column;
@@ -22,65 +18,72 @@
             height: 100vh;
             margin: 0;
         }
-        .contact-btn {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 7.5vw;
-            height: 7.5vw;
-            background-color: #111;
-            border-radius: 50%;
-            margin-top: 0px;
-            transition: transform 0.3s ease;
-        }
-        .contact-btn:hover {
-            transform: scale(1.2);
-        }
-        .contact-btn img {
-            width: 60%;
-            height: auto;
-        }
-        h1 {
-            font-family: sans-serif;
-            color: #fff;
-            font-size: 7.5vw;
-            margin-bottom: 2vw;
-            cursor: pointer;
-            margin-top: 0vw;
-        }
+
+        h1,
         h2 {
             font-family: sans-serif;
-            color: #adadad;
-            font-size: 2.5vw;
-            margin-bottom: 0vw;
+            text-align: center;
+            margin: 0;
         }
+
+        h1 {
+            color: #fff;
+            font-size: 6vw;
+            cursor: pointer;
+        }
+
+        h2 {
+            color: #bbb;
+            font-size: 3vw;
+        }
+
         .copied {
             color: #cccccc;
         }
+
+        @media (max-aspect-ratio: 1/1) {
+            body {
+                justify-content: flex-start;
+                padding-top: 2.5vh;
+            }
+
+            h1 {
+                font-size: 9vw;
+            }
+
+            h2 {
+                font-size: 4vw;
+            }
+        }
     </style>
 </head>
+
 <body ondragstart="return false;" ondrop="return false;">
     <h2>reserve a page now</h2>
     <h1 id="email">kk0vln99@gmail.com</h1>
-    <a href="mailto:kk0vln99@gmail.com" class="contact-btn">
-        <img src="email.svg" alt="Email Icon"/>
-    </a>
 
     <script>
         const emailElement = document.getElementById('email');
-        
+        const email = emailElement.textContent;
+        let clicked = false;
+
         emailElement.addEventListener('click', () => {
-            navigator.clipboard.writeText(emailElement.textContent)
-                .then(() => {
+            if (!clicked && window.innerWidth / window.innerHeight < 1) {
+                window.location.href = `mailto:${email}`;
+                clicked = true;
+            } else {
+                navigator.clipboard.writeText(email).then(() => {
                     emailElement.textContent = "copied";
                     emailElement.classList.add('copied');
+                    clicked = true;
                     setTimeout(() => {
-                        emailElement.textContent = "kk0vln99@gmail.com";
+                        emailElement.textContent = email;
                         emailElement.classList.remove('copied');
                     }, 2000);
-                })
-                .catch(err => console.error('Failed to copy text: ', err));
+                }).catch(console.error);
+            }
         });
     </script>
 </body>
+
 </html>
