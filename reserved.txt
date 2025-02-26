@@ -9,3 +9,10 @@
 /e
 /sd2k42
 /sam
+/ishowspeed
+/c
+/larper
+/waz
+/skid
+/moon
+/d
