@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" oncontextmenu="return false;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>About - yter.lol</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <style>
+        html,
+        body {
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            font-family: sans-serif;
+            color: white;
+        }
+
+        h1 {
+            font-size: 7vw;
+            margin-bottom: 0;
+        }
+
+        h3 {
+            font-size: 2.5vw;
+            user-select: none;
+        }
+
+        .content-box {
+            width: 100%;
+            max-width: 60vw;
+        }
+
+        p {
+            font-size: 3vh;
+        }
+
+        a {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        a:hover {
+            color: #fff;
+        }
+
+        .email {
+            color: #bbb;
+            cursor: pointer;
+            user-select: auto;
+        }
+
+        @media (max-aspect-ratio: 1/1) {
+            h1 {
+                font-size: 12vw;
+            }
+
+            .button {
+                font-size: 4vw;
+                padding: 0vw 2vw;
+            }
+
+            .content-box {
+                width: 100%;
+                max-width: 80vw;
+            }
+
+            h3 {
+                font-size: 6vw;
+            }
+        }
+    </style>
+</head>
+
+<body ondragstart="return false;" ondrop="return false;">
+    <h1>yter.lol</h1>
+    <div class="content-box">
+        <p>yter.lol is an upcoming bio service designed for creators. For now, if you are a creator on YouTube with over
+            100,000 subscribers and at least one video longer than 3 minutes in the past three months, you can reserve a
+            FREE bio link.</p>
+        <p>We plan to custom build bio pages instead of providing panels to
+            prevent security vulnerabilities. This means you can submit your own website to us or tell us what to create.</p>
+        <p>To reserve a link, <strong><span id="email" class="email">email us</span></strong> or <strong><a
+                href="https://discord.gg/k4MTGBTqeA" target="_blank">join our Discord server</a></strong>.</p>
+    </div>
+</body>
+<a href="../">
+    <h3>return</h3>
+</a>
+<script>
+    const emailElement = document.getElementById('email');
+    const email = emailElement.textContent;
+    let clicked = false;
+
+    emailElement.addEventListener('click', () => {
+        if (!clicked && window.innerWidth / window.innerHeight < 1) {
+            window.location.href = `mailto:${email}`;
+            clicked = true;
+        } else {
+            navigator.clipboard.writeText(email).then(() => {
+                emailElement.textContent = "copied";
+                emailElement.classList.add('copied');
+                clicked = true;
+                setTimeout(() => {
+                    emailElement.textContent = email;
+                    emailElement.classList.remove('copied');
+                }, 2000);
+            }).catch(console.error);
+        }
+    });
+</script>
+
+</html>
